@@ -1,5 +1,7 @@
 package EpamJavaTrainee.Tasks.Library;
 
+import EpamJavaTrainee.Tasks.Library.Books.*;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -1,7 +1,7 @@
 package EpamJavaTrainee.Tasks.Library;
 
-import BasicOOP.Library.Books.Book;
-import BasicOOP.Library.Books.BooksCatalog;
+import EpamJavaTrainee.Tasks.Library.Books.Book;
+import EpamJavaTrainee.Tasks.Library.Books.BooksCatalog;
 
 import java.io.IOException;
 

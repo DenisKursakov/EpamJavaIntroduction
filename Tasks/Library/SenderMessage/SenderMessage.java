@@ -10,32 +10,26 @@ import java.util.Properties;
 public class SenderMessage {
     public static void main(String[] args) {
 
-        String to = "newsm0k@mail.ru";         // sender email
-        String from = "itisfunny4x@gmail.com";       // receiver email
-        String host = "127.0.0.1";            // mail server host
 
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.myisp.com");
+        Session session = Session.getDefaultInstance(properties, null);
 
-        Session session = Session.getDefaultInstance(properties); // default session
 
+        String to = "newsm0k@mail.ru";    
+        String from = "itisfunny4x@gmail.com";
+        String subject = "Hello";
+        Message msg = new MimeMessage(session);
         try {
-            MimeMessage message = new MimeMessage(session); // email message
+            msg.setFrom(new InternetAddress(from));
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            msg.setSubject(subject);
+            msg.setText("Hi,\n\nIt's my message");
 
-            message.setFrom(new InternetAddress(from)); // setting header fields
-
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-            message.setSubject("Test Mail from Java Program"); // subject line
-
-            // actual mail body
-            message.setText("You can send mail from Java program by using mail API, but you need" +
-                    "couple of more JAR files e.g. smtp.jar and activation.jar");
-
-            // Send message
-            Transport.send(message); System.out.println("Email Sent successfully....");
-        } catch (MessagingException mex){ mex.printStackTrace(); }
-
+            // Send the message.
+            Transport.send(msg);
+        } catch (MessagingException e) {
+            // Error.
+        }
     }
-
 }
